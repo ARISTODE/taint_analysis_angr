@@ -43,7 +43,7 @@ def main():
     # https://docs.angr.io/docs/pathgroups.html#simple-exploration says it CAN, but doesn't say HOW
     for (address, function_name) in sensitive_calls:
         sm = project.factory.simulation_manager(state)
-        sm.explore(find=address)
+        sm.explore(find=address, num_find=5)
         if len(sm.found) > 0:
 
             # check if the call will always be triggered
