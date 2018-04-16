@@ -52,6 +52,7 @@ def main():
             for found in sm.found:
                 if ord(found.posix.dumps(0)[0]) == 1:
                     will_always_trigger = True
+                    break
 
             # output warning
             if not will_always_trigger:
