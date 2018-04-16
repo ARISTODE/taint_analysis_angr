@@ -1,5 +1,6 @@
 import angr
 import subprocess
+import string
 
 sensitive_functions = (
     'setuid',
@@ -54,7 +55,8 @@ def main():
 
             # output warning
             if not will_always_trigger:
-                print("Warning! Input \'%s\' will trigger (0x%x, %s)" % (sm.found[0].posix.dumps(0), address, function_name))
+                input = [''.join(s for s in found.posix.dumps(0) if s in string.printable) for found in sm.found]
+                print("Warning! Input \'%s\' will trigger (0x%x, %s)" % (input, address, function_name))
         else:
             print("No paths found in %x, %s" % (address, function_name))
 
