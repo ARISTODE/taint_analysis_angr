@@ -8,11 +8,11 @@ int main(int argc, char **argv)
 {
   char buf[10];
   scanf("%s", buf);
-  if(strcmp(buf, "crack") == 0)
+  if(strncmp(buf, "crack", 5) == 0 || strncmp(buf, "cse544", 6) == 0)
   {
     setuid(0);
     setgid(0);
-    printf("crack, uid=%d, gid=%d\n", getuid(), getgid());
+    printf("cracked, uid=%d, gid=%d\n", getuid(), getgid());
     write(1, "hello world\n", 12);
   }
   else
